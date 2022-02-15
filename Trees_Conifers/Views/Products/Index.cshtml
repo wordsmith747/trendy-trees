@@ -1,0 +1,48 @@
+﻿@using Humanizer;
+@model IList<ProductViewModel>
+
+@{
+    ViewData["Title"] = "Trees";
+}
+
+<h1>@ViewData["Title"]</h1>
+<br/>
+
+@foreach (var product in Model)
+{
+    <div class="row">
+        <div class="col-1">
+            <img src="~/images/@product.ImageName" class="rounded-sm" alt="Picture of @product.Name" height="80px" width="50px">
+        </div>
+        <div class="col-3">
+            <h3>@product.Name</h3>
+            <span class="text-muted small">
+                <em>
+                    Added
+                    @((DateTime.Now - product.PublishDate).Humanize(1)) ago
+                </em>
+            </span>
+        </div>
+        <div class="col-3">
+            @if (product.DetermineIsNew())
+            {
+                <span class="badge badge-primary">New</span><br />
+            }
+
+            @if (product.IsInStockOrIsOutofStock())
+            {
+                <span class="badge badge-danger">Out of stock</span><br />
+            }
+
+            @if (product.FreeShipping)
+            {
+                <span class="badge badge-success">Free shipping</span>
+            }
+        </div>
+        <div class="col-2">
+            <a class="btn btn-primary" href="/Products/Details/@product.Id" role="button">Details</a>
+        </div>
+    </div>
+    <hr />
+    <br />
+}

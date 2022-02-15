@@ -1,0 +1,52 @@
+﻿@model ContactViewModel
+
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<h1>@ViewData["Title"]</h1>
+<div>
+    <br />
+    <p>
+        @Faker.Lorem.Paragraph(5)
+    </p>
+    <p>
+        <strong>  Please submit all of the enquiries with this contact form.</strong>
+    </p>
+</div>
+
+<form asp-action="Index">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control">
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MobilePhone"></label>
+        <input asp-for="MobilePhone" class="form-control">
+        <span class="text-danger" asp-validation-for="MobilePhone"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="EmailAddress"></label>
+        <input asp-for="EmailAddress" class="form-control">
+        <span class="text-danger" asp-validation-for="EmailAddress"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ConfirmEmailAddress"></label>
+        <input asp-for="ConfirmEmailAddress" class="form-control">
+        <span class="text-danger" asp-validation-for="ConfirmEmailAddress"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Message"></label>
+        <textarea asp-for="Message" rows="5" class="form-control"></textarea>
+        <span class="text-danger" asp-validation-for="Message"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Submit" class="btn btn-primary" />
+    </div>
+</form>

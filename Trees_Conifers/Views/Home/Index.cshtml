@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Trendy Trees</h1>
+</div>
+<br />
+@foreach (var paragraphText in Faker.Lorem.Paragraphs(5))
+{
+    <p>@paragraphText</p>
+}

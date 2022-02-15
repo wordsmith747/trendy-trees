@@ -1,0 +1,56 @@
+﻿@using Humanizer 
+@model ProductViewModel
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<a asp-controller="Products" asp-action="Index">View all products</a>
+<br /><br />
+
+<div class="row">
+    <div class="col-3">
+        <img src="~/images/@Model.ImageName" class="img-fluid img-thumbnail" />
+    </div>
+    <div class="col-7">
+        <h1>@ViewData["Title"]</h1>
+        <br />
+
+        <p>@Model.Description</p>
+        @*<p>@Model.ImageName</p>
+        <p>@Model.Price_Small</p>
+        <p>@Model.Price_Large</p>
+        <p>@Model.Number_Items_Basket</p>
+        <ul>
+            @foreach (var productDimension in Model.AvailableDimensions)
+            {
+                <li>
+                    @productDimension.Name
+
+                </li>
+            }
+        </ul>*@
+
+        @if (Model.DetermineIsNew())
+        {
+            <span class="badge badge-primary">New</span><br />
+        }
+
+        @if (Model.IsInStockOrIsOutofStock())
+        {
+            <span class="badge badge-danger">Out of stock</span><br />
+        }
+
+        @if (Model.FreeShipping)
+        {
+            <span class="badge badge-success">Free shipping</span>
+        }
+        <br /><br />
+        <p class="text-muted small">
+            <em>
+                This product was added
+                @((DateTime.Now - Model.PublishDate).Humanize(1)) ago
+            </em>
+        </p>
+    </div>
+</div>
