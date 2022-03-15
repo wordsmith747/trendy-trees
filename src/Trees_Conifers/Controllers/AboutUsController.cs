@@ -64,7 +64,7 @@ namespace TrendyTrees.Controllers
 
             client.Send(mm);
 
-            return RedirectToAction("Form_Success", "AboutUS");
+            return RedirectToAction("Form_Success", "AboutUs");
         }
 
         public IActionResult Form_Success()
